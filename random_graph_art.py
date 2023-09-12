@@ -34,7 +34,7 @@ def generate_points_in_circle_area(start, end):
     yc = (y1 + y2) // 2
     
     while cnt < points_per_area:
-        print(x1, x2, y1, y2)
+        #print(x1, x2, y1, y2)
         if x1 > x2:
             xa, ya = x1, y1
             x1, y1 = x2, y2
@@ -43,7 +43,7 @@ def generate_points_in_circle_area(start, end):
         y = random.randint(y1, y2)
         #Check if the points overlap each other and make sure that have circular distribution
         if overlap_check(points, (x, y), node_radius) == False and is_inside_circle((x,y), (xc, yc)):
-            print(x,y)
+            #print(x,y)
             points.append((x, y))
             #draw.ellipse((x - node_radius, y - node_radius, x + node_radius, y + node_radius), fill=(255, 0, 0), outline="black")
             cnt+=1
@@ -74,7 +74,7 @@ def generate_points_in_canvas(start, end):
     while cnt < chunk_in_canvas:
         x = random.randint(x1, x2)
         y = random.randint(y1, y2)
-        print(x,y)
+        #print(x,y)
         #Check if the points overlap each other and make sure that have circular distribution
         #print(x,y)
         if overlap_check(points, (x, y), canvas_points_radius) == False:
@@ -106,8 +106,8 @@ def generate_areas(points):
     return  areas
 
 def draw_lines_between_points_and_chunk(points_area, big_points):
-    print("hddd")
-    print(big_points)
+    #print("hddd")
+    #print(big_points)
     for area_point in points_area:
         
         for point in area_point:
@@ -118,9 +118,9 @@ def draw_lines_between_points_and_chunk(points_area, big_points):
                 draw.line([start, end], fill=(0, 0, 0), width=1)
 #generate points inside canvas
 canvas_points = generate_points_in_canvas((chunk_radius, chunk_radius), (width - chunk_radius, height - chunk_radius))
-print(canvas_points)
+#print(canvas_points)
 points, areas_p = classify_points_and_areas(canvas_points)
-print(points, areas_p)
+#print(points, areas_p)
 areas = generate_areas(areas_p)
 
 points_area = []
@@ -129,7 +129,7 @@ big_points = []
 for area in areas:
     start = area[0]
     end = area[1]
-    print(start, end)
+    #print(start, end)
     points_area.append(generate_points_in_circle_area(start, end))
 
 for point in points:
@@ -150,7 +150,7 @@ for area_point in points_area:
 
 #draw_points_in_circle_area((0,0),(300,300))
 # Save the graph as a PPM image
-canvas.save('random_art.ppm', 'PPM')
-print("Random art image (512x512) saved as 'graph_network.ppm'")
+canvas.save('graph_network_art.ppm', 'PPM')
+print("Random art image (512x512) saved as 'graph_network_art.ppm'")
 #if __name__ == "__main__":
     
