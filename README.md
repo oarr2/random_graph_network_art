@@ -2,6 +2,8 @@
 
 A python program that generates a randomn graph network art
 
+It is on python 3.10.0 
+
 ## Installation
 
 Use the package manager pip to install dependecies.
